@@ -16,7 +16,7 @@
 4: Merge result from point 3 with files where are found the activity_ID (Y_train, Ytest) and Subjects_ID 
    (Subject_train, Subject_est) found inside the train and test folder.     
 
-5: rename all columns with the corresponding descriptive measurement found in the main directory, (UCI HAR Dataset) 
+5: rename all columns with the corresponding descriptive measurement (features) found in the main directory, (UCI HAR Dataset) 
 
 6: replace the activity_ID's with the corresponding descriptive variable names
 
@@ -28,7 +28,7 @@
    
  The zip file was unzipped below my "data" directory located below my working directory. However, the program checks   the availabily of a "data" directory and if not present it creates it.
 
- Cocerning point 3 and 5, it was choosen to invert operations i.e. naming the columns first and then extracting the 
+ Concerning point 3 and 5, it was choosen to invert operations i.e. naming the columns first and then extracting the 
  mean and STD mesurements.  
     
 Point 7 was carried out in two different ways, one, the current requires the packages dplyr. The second is NOT enabled  as it is included within comments (see the script) at the end of it. In order to try it it must be activated by    deleating the coment sign but then it requires loading the data.table package. Appropriate call to those library is carried out along the script but packages must be installed in  advance from cran
