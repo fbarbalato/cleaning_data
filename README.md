@@ -33,6 +33,6 @@
     
 Point 7 was carried out in two different ways, one, the current requires the packages dplyr. The second is NOT enabled  as it is included within comments (see the script) at the end of it. In order to try it it must be activated by    deleating the coment sign but then it requires loading the data.table package. Appropriate call to those library is carried out along the script but packages must be installed in  advance from cran
     
-The resulting data base is saved in a text file named DBFinal.txt
+The resulting data base (DBFinal) is saved in a text file named TidyDB.txt
 
 
