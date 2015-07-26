@@ -26,8 +26,10 @@ At this point, all columns were merged including the 2 of the activity and volun
 The final question was to extract from the above mentioned data the mean of each variable for each activity and each subject. After calculating the mean for each variable, the point was to decide whether to change names of all columns but preserving in a way the original (for example adding the word "MEAN OF:" followed by the name of the original column name) easily done with a loop:
 
  for (i in 3: ncol(DBFinal)){
-   names(RenameCol)[i]<- paste("MEAN OF:",names(RenameCol)[i] , sep=" ")
+ 
+   names(DBFinal)[i]<- paste("MEAN OF:",names(DBFinal)[i] , sep=" ")
    #exception of the column 1 and 2, activity and subject
+
 }
 
 but I found that the final name would become too long and therefore I decided not to proceed. The final point was infact to calculate the mean of all columns and I wanted to preserve the original name in order of being able to see what it was. 
