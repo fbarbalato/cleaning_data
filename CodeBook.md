@@ -7,14 +7,30 @@ The "Getting and Cleaning" project was carried out on a set of data from an expe
 
 Using its embedded accelerometer and gyroscope,  3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz were captured. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
 
-The total number of measurements produced was found to be in sets of data of 561 columns, training ad test data. The number of rows were different due to the above mentioned selecting criteria.    
+The total number of measurements produced was found to be in sets of data of 561 columns, training ad test data. The number of rows these sets were different due to the above mentioned selecting criteria.   
+
+Looking at duplicated column names I found a few and they have been removed. 
+
+if(any(duplicated(colnames(TrainTest)))){
+   TrainTest<-TrainTest[,!duplicated(colnames(TrainTest))]
+}
+At this point the number of columns of the training and test sequence were totally 447. 
 
 The scope of this work was to extract some of those variables (after a merging (rowbinding) procedure of the training and test sequences) namely those reporting the "mean"" or the "STD"" value. No attention has been paied whether it would make sense  including or not some columns as long as their names partially matched our selecting criteria. The scope of this work is related on the capability of extracting some columns among many others partially matching the name of the variable with the requested one. In this case the search was on column names partially matching the string "-mean" and "-std" ignoring the case.
 
 SeqMean<-TrainTest[grep("-mean" ,colnames(TrainTest),ignore.case=TRUE,fixed=FALSE,value=TRUE)]
 SeqStd<-TrainTest[grep("-std" ,colnames(TrainTest),ignore.case=TRUE,fixed=FALSE,value=TRUE)]
 
-At the end of the work the number of variables were found to be totally 81, 49 with "-mean" values, 33 with "-std" values plus the activity column renamed to "Activity_ Type" and the volunteer ID number column renamed to "Subject_Name".
+At this point, all columns were merged including the 2 of the activity and volunteer's ID. The total number of variables were found to be totally 81, distributed with 49 "-mean" values, 33 "-std" values plus the activity column renamed to "Activity_ Type"" and the volunteer ID number column renamed to "Subject_Name".
+
+The final question was to extract from the above mentioned data the mean of each variable for each activity and each subject. After calculating the mean for each variable, the point was to decide whether to change names of all columns but preserving in a way the original (for example adding the word "MEAN OF:" followed by the name of the original column name) easily done with a loop:
+
+ for (i in 3: ncol(DBFinal)){
+   names(RenameCol)[i]<- paste("MEAN OF:",names(RenameCol)[i] , sep=" ")
+   #exception of the column 1 and 2, activity and subject
+}
+
+but I found that the final name would become too long and therefore I decided not to proceed. The final point was infact to calculate the mean of all columns and I wanted to preserve the original name in order of being able to see what it was. 
 
 Following list reports column number [i] followed by its name of the final dataset.
 
