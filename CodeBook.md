@@ -9,10 +9,13 @@ Using its embedded accelerometer and gyroscope,  3-axial linear acceleration and
 
 The total number of measurements produced was found to be in sets of data of 561 columns, training ad test data. The number of rows were different due to the above mentioned selecting criteria.    
 
-The scope of this work was to extract some of those variables namely those reporting the "mean"" or the "STD"" value. No attention has been paied whether it would make sense  including or not some columns as long as their names partially matched our selecting criteria. The scope of this work is related on the capability of extracting some columns among many others partially matching the name of the variable with the requested one. In this case the search was on column names partially matching the string "-mean" and "-std" ignoring the case.
+The scope of this work was to extract some of those variables (after a merging (rowbinding) procedure of the training and test sequences) namely those reporting the "mean"" or the "STD"" value. No attention has been paied whether it would make sense  including or not some columns as long as their names partially matched our selecting criteria. The scope of this work is related on the capability of extracting some columns among many others partially matching the name of the variable with the requested one. In this case the search was on column names partially matching the string "-mean" and "-std" ignoring the case.
 
+SeqMean<-TrainTest[grep("-mean" ,colnames(TrainTest),ignore.case=TRUE,fixed=FALSE,value=TRUE)]
+SeqStd<-TrainTest[grep("-std" ,colnames(TrainTest),ignore.case=TRUE,fixed=FALSE,value=TRUE)]
 
-At the end of the work the number of variables were found to be totally 81, 49 with "-mean" values, 33 with "-std" values plus the activity column renamed to "Activity_ Type"" and the volunteer ID number column renamed to "Subject_Name".
+At the end of the work the number of variables were found to be totally 81, 49 with "-mean" values, 33 with "-std" values plus the activity column renamed to "Activity_ Type" and the volunteer ID number column renamed to "Subject_Name".
+
 Following list reports column number [i] followed by its name of the final dataset.
 
 
